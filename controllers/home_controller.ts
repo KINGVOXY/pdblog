@@ -37,6 +37,7 @@ export async function post_form(req: SystemRequest, res: SystemResponse): Promis
         console.log(error);
         
         res.status = 500;
+        res.headers.append("errMes", error);
     }
     await res.send(res.response);
 }

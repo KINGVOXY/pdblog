@@ -1,3 +1,4 @@
+// deno-lint-ignore-file
 function getPostElements(id_list=[]) {
     const obj = {};
     for(let id of id_list) {
@@ -12,6 +13,7 @@ function getPostElements(id_list=[]) {
 
 async function postData(url = '', data = { }) {
     const dataStr = JSON.stringify(data);
+    console.log(dataStr);
 
     const response = await fetch(url, {
         method: 'POST',
@@ -33,12 +35,13 @@ $(async function(e) {
         e.preventDefault()
         
         await postData('/form/post', getPostElements([ "A", "B", "C", "D", "E", "F" ]))
-        .then(response => {
-            console.log(response);
-            if (response.ok) {
+        .then(res => {
+            console.log(res);
+            if (res.ok) {
                 location.href = "/neko?mes=ok!"
             } else {
-                location.href = "/neko?mes=ohh"
+                const errMes = res.headers.get("errMes")
+                location.href = "/neko?mes=" + errMes;
             }
         })
         .catch(e => {
