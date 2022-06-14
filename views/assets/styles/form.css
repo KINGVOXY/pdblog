@@ -1,0 +1,25 @@
+body {
+    background-color: cornsilk;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 72px;
+    box-sizing: border-box;
+}
+
+.dropdown-menu {
+    background-color: cornsilk;
+}
+
+footer {
+    height: 72px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    position: absolute;
+    bottom: 0;
+}
+
+small {
+    height: inherit;
+}
